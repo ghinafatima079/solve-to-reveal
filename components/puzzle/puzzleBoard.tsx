@@ -456,6 +456,42 @@ export default function PuzzleBoard({
 `
     return (
         <div className="flex flex-col items-center">
+            <div className="mb-6 text-center">
+                <p
+                    className="
+      text-sm
+      uppercase
+      tracking-[0.3em]
+      text-zinc-500
+      mb-3
+    "
+                >
+                    Puzzle Reveal
+                </p>
+
+                <h1
+                    className="
+      text-3xl md:text-5xl
+      font-bold
+      text-white
+      mb-3
+    "
+                >
+                    Solve to Reveal
+                </h1>
+
+                <p
+                    className="
+      text-zinc-400
+      max-w-md
+      mx-auto
+      leading-relaxed
+    "
+                >
+                    Rearrange the puzzle pieces
+                    to uncover a hidden message.
+                </p>
+            </div>
             {/* HUD */}
             <div
                 className="
