@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 import { Caveat } from "next/font/google"
 
@@ -240,6 +241,9 @@ export default function PuzzleBoard({
     const [showMessage, setShowMessage] =
         useState(false)
 
+    const [copied, setCopied] =
+        useState(false)
+
     // ───────────────────────────────────────────────────────────
     // LOAD IMAGE
     // ───────────────────────────────────────────────────────────
@@ -398,6 +402,18 @@ export default function PuzzleBoard({
         swapPieces(selectedId, id)
 
         setSelectedId(null)
+    }
+
+    async function handleShare() {
+        await navigator.clipboard.writeText(
+            window.location.href
+        )
+
+        setCopied(true)
+
+        setTimeout(() => {
+            setCopied(false)
+        }, 2000)
     }
 
     // ───────────────────────────────────────────────────────────
@@ -691,9 +707,58 @@ export default function PuzzleBoard({
                                 {hiddenMessage}
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>
+
+            {solved && (
+                <div
+                    className="
+      mt-8
+      flex flex-col sm:flex-row
+      gap-4
+      animate-in
+      fade-in
+      duration-700
+    "
+                >
+                    <button
+                        onClick={handleShare}
+                        className="
+        px-6 py-3
+        rounded-2xl
+        bg-white
+        text-black
+        font-semibold
+        hover:scale-105
+        transition
+      "
+                    >
+                        {copied
+                            ? "Link Copied"
+                            : "Copy Puzzle Link"}
+                    </button>
+
+                    <Link
+                        href="/create"
+                        className="
+        inline-flex
+        items-center justify-center
+        px-6 py-3
+        rounded-2xl
+        border border-zinc-700
+        text-white
+        font-semibold
+        hover:bg-zinc-900
+        transition
+      "
+                    >
+                        Make Your Own Puzzle
+                    </Link>
+                </div>
+            )}
+
         </div>
     )
 }
