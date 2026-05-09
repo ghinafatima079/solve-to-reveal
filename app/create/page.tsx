@@ -305,10 +305,28 @@ export default function CreatePage() {
           "
                 >
                     {imageSrc ? (
-                        <PuzzleBoard
-                            imageSrc={imageSrc}
-                            hiddenMessage={message}
-                        />
+                        <div
+                            className="
+    w-full
+    max-w-[500px]
+    rounded-3xl
+    overflow-hidden
+    border border-zinc-800
+    bg-zinc-900
+    shadow-2xl
+  "
+                        >
+                            <img
+                                src={imageSrc}
+                                alt="Preview"
+                                className="
+      w-full
+      h-auto
+      object-cover
+      block
+    "
+                            />
+                        </div>
                     ) : (
                         <div
                             className="

@@ -457,7 +457,6 @@ export default function PuzzleBoard({
     return (
         <div className="flex flex-col items-center">
             {/* HUD */}
-
             <div
                 className="
     flex items-center gap-6
@@ -568,9 +567,9 @@ export default function PuzzleBoard({
                             return (
                                 <motion.div
                                     key={piece.id}
-                                    onClick={() =>
+                                    onClick={() => {
                                         handlePieceClick(piece.id)
-                                    }
+                                    }}
 
                                     drag
                                     dragMomentum={false}
